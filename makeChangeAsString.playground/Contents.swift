@@ -24,7 +24,47 @@ func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
         
         let penny = (leftover3 / 0.01).rounded(.towardZero)
         
-        let returnStatement1: String = "You didn't pay enough! You still owe $\(change). That is \(UInt(dollar)) dollars, \(UInt(quarter)) quarters, \(UInt(dime)) dimes, \(UInt(nickel)) nickels and \(UInt(penny)) pennies."
+        var dollarStatement = ""
+        
+        if dollar >= 1 && dollar < 2 {
+            dollarStatement = "That is \(UInt(dollar)) dollar,"
+        } else {
+            dollarStatement = "That is \(UInt(dollar)) dollars,"
+        }
+        
+        var quarterStatement = ""
+        
+        if quarter == 1 {
+            quarterStatement = "\(UInt(quarter)) quarter,"
+        } else {
+            quarterStatement = "\(UInt(quarter)) quarters,"
+        }
+        
+        var dimeStatement = ""
+        
+        if dime == 1 {
+            dimeStatement = "\(UInt(dime)) dime,"
+        } else {
+            dimeStatement = "\(UInt(dime)) dimes,"
+        }
+        
+        var nickelStatement = ""
+        
+        if nickel == 1 {
+            nickelStatement = "\(UInt(nickel)) nickel"
+        } else {
+            nickelStatement = "\(UInt(nickel)) nickels"
+        }
+        
+        var pennyStatement = ""
+        
+        if penny == 1 {
+            pennyStatement = "\(UInt(penny)) penny."
+        } else {
+            pennyStatement = "\(UInt(penny)) pennies."
+        }
+        
+        let returnStatement1: String = "You didn't pay enough! You still owe $\(change). \(dollarStatement) \(quarterStatement) \(dimeStatement) \(nickelStatement) and \(pennyStatement)"
         
         return returnStatement1
         
@@ -50,7 +90,47 @@ func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
         
         let penny = (leftover3 / 0.01).rounded(.towardZero)
         
-        let returnStatement: String = "Your change is $\(change). That is \(UInt(dollar)) dollars, \(UInt(quarter)) quarters, \(UInt(dime)) dimes, \(UInt(nickel)) nickels and \(UInt(penny)) pennies."
+        var dollarStatement = ""
+        
+        if dollar > 1 && dollar < 2 {
+            dollarStatement = "That is \(UInt(dollar)) dollar,"
+        } else {
+            dollarStatement = "That is \(UInt(dollar)) dollars,"
+        }
+        
+        var quarterStatement = ""
+        
+        if quarter == 1 {
+            quarterStatement = "\(UInt(quarter)) quarter,"
+        } else {
+            quarterStatement = "\(UInt(quarter)) quarters,"
+        }
+        
+        var dimeStatement = ""
+        
+        if dime == 1 {
+            dimeStatement = "\(UInt(dime)) dime,"
+        } else {
+            dimeStatement = "\(UInt(dime)) dimes,"
+        }
+        
+        var nickelStatement = ""
+        
+        if nickel == 1 {
+            nickelStatement = "\(UInt(nickel)) nickel"
+        } else {
+            nickelStatement = "\(UInt(nickel)) nickels"
+        }
+        
+        var pennyStatement = ""
+        
+        if penny == 1 {
+            pennyStatement = "\(UInt(penny)) penny."
+        } else {
+            pennyStatement = "\(UInt(penny)) pennies."
+        }
+        
+        let returnStatement: String = "Your change is $\(change). \(dollarStatement) \(quarterStatement) \(dimeStatement) \(nickelStatement) and \(pennyStatement)"
         
         return returnStatement
         
