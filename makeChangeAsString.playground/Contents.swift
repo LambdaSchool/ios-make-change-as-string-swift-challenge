@@ -10,7 +10,7 @@ func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
     for (index, element) in splits.enumerated() {
         dictionary[element] = values[index]
     }
-    let string = dictionary.map{ "\($0):\($1)" }.joined(separator: " ")
+    let string = dictionary.compactMap{ "\($0) \($1)" }.joined(separator: " ")
     return "Your change is $\(change). That is \(string)"
 }
 
