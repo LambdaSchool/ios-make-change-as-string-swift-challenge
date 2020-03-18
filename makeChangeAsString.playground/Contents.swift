@@ -2,7 +2,17 @@ import UIKit
 
 
 
-
+func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
+    let change = fromAmount - withCost
+    let splits = "\(change)".compactMap{ String($0).replacingOccurrences(of: ".", with: "0") }
+    let values = ["dollars", "quarters", "dime", "nickels", "pennies"]
+    var dictionary: [String: String] = [:]
+    for (index, element) in splits.enumerated() {
+        dictionary[element] = values[index]
+    }
+    let string = dictionary.map{ "\($0):\($1)" }.joined(separator: " ")
+    return "Your change is $\(change). That is \(string)"
+}
 
 
 
@@ -18,7 +28,7 @@ import UIKit
 
 
 // Test Cases
-//makeChangeAsString(fromAmount: 10.00, withCost: 2.38) // returns "Your change is $7.62. That is 7 dollars, 2 quarters, 1 dime, 0 nickels and 2 pennies."
+makeChangeAsString(fromAmount: 10.00, withCost: 2.38) // returns "Your change is $7.62. That is 7 dollars, 2 quarters, 1 dime, 0 nickels and 2 pennies."
 //makeChangeAsString(fromAmount: 5.00, withCost: 2.15)  // returns "Your change is $2.85. That is 2 dollars, 3 quarters, 1 dime, 0 nickels and 0 pennies."
 //makeChangeAsString(fromAmount: 1.00, withCost: 2.38)  // returns "You didn't pay enough! You still owe $1.38. That is 1 dollar, 1 quarter, 1 dime, 0 nickels and 3 pennies."
 //makeChangeAsString(fromAmount: 10.00, withCost: 8.00) // returns "Your change is $2.0. That is 2 dollars, 0 quarters, 0 dimes, 0 nickels and 0 pennies."
