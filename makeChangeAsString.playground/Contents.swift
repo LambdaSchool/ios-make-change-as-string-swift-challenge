@@ -26,26 +26,29 @@ func changeCounter(amountHolder: Double) -> String {
     
     let dollars = Int(amountHolder)
     holder = (amountHolder - Double(dollars))
-    let quarters = Int(holder / quarterValue)
+    let quarters = Int(roundingFunc(holder: holder / quarterValue))
 //    print(holder)
     
     holder = holder - (Double(quarters) * quarterValue)
 //    print(holder)
     
-    let dimes = Int(holder / dimeValue)
+    let dimes = Int(roundingFunc(holder: holder / dimeValue))
     holder = holder - (Double(dimes) * dimeValue)
 //    print(holder)
     
-    let nickels = Int(holder / nickelValue)
-    holder = holder - (Double(nickels) * nickelValue)
+    let nickels = Int(roundingFunc(holder: holder / nickelValue))
+    holder = (holder - (Double(nickels) * nickelValue))
 //    print(holder)
     
-    let pennies = Int(holder / pennieValue)
+    let pennies = Int(roundingFunc(holder: holder / pennieValue))
     
     return "That is \(dollars) dollars, \(quarters) quarters, \(dimes) dimes, \(nickels) nickels, \(pennies) pennies."
 }
 
-
+func roundingFunc(holder: Double) -> Double {
+    let result = (holder * 100).rounded() / 100
+    return result
+}
 
 
 
