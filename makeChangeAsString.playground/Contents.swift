@@ -1,19 +1,37 @@
 import UIKit
 
 
+func makeChangeAsString(fromAmount: Double, withCost: Double) {
+    
+    let changeAmount = fromAmount - withCost
+    
+    let dollars = Int(changeAmount)
+    
+    let remainder = changeAmount.truncatingRemainder(dividingBy: 1)
+    let quarters = Int(remainder / 0.25)
+    
+    let quarterAmount = Double(quarters) * 0.25
+    let dimeChange = remainder - quarterAmount
+    let dimes = Int(dimeChange / 0.10)
+    
+    let dimeAmount = Double(dimes) * 0.10
+    let nickelChange = remainder - quarterAmount - dimeAmount
+    let nickels = Int(nickelChange / 0.05)
+    
+    let nickelAmount = Double(nickels) * 0.05
+    let pennyChange = remainder - quarterAmount - dimeAmount - nickelAmount
+    let pennies = Int(pennyChange / 0.01)
+    
+    
+    
+    
+    print("Your change is $\(changeAmount). That is \(dollars) dollars, \(quarters) quarters, \(dimes) dimes, \(nickels) nickels, and \(pennies) pennies.")
+    
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+makeChangeAsString(fromAmount: 10.00, withCost: 2.38)
+makeChangeAsString(fromAmount: 5.00, withCost: 2.15)
 
 
 
