@@ -4,6 +4,28 @@ import UIKit
 
 
 
+func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
+    let change = fromAmount - withCost
+    let changeArray = Array(String(change))
+    var dollarCount = 0.0
+    var quartersCount = 0.0
+    var dimeCount = 0.0
+    var nickelsCount = 0.0
+    var penniesCount = 0.0
+    
+    for element in changeArray {
+        if element == changeArray[0] {
+            print("\(element) dollars")
+        } else {
+            
+        }
+        
+    }
+    
+   
+    
+}
+
 
 
 
