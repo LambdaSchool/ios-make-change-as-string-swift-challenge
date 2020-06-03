@@ -1,5 +1,50 @@
 import UIKit
 
+func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
+    var diff: Double = 0.00
+    var diffString: String = ""
+    var dollarCount: Int = 0
+    var quarterCount: Int = 0
+    var dimeCount: Int = 0
+    var nickelCount: Int = 0
+    var pennyCount: Int = 0
+    
+    
+    if withCost > fromAmount {
+        return "Cost is greater than amount paid."
+    } else {
+        diff = fromAmount - withCost
+        diffString = String(diff)
+        
+        while diff > 0.00 {
+            while diff > 1 {
+                dollarCount += 1
+                diff -= 1
+            }
+            
+            while diff > 0.24 && diff < 1.00 {
+                quarterCount += 1
+                diff -= 0.25
+            }
+            
+            while diff > 0.09 && diff < 0.25 {
+                dimeCount += 1
+                diff -= 0.10
+            }
+            
+            while diff > 0.04 && diff < 0.10 {
+                nickelCount += 1
+                diff -= 0.05
+            }
+            
+            while diff > 0.00 && diff < 0.05 {
+                pennyCount += 1
+                diff -= 0.01
+            }
+        }
+        return "Thank you, your change is \(diffString). That's \(dollarCount) dollars, \(quarterCount) quarters, \(dimeCount) dimes \(nickelCount) nickels, and \(pennyCount) pennies. Have a nice day!"
+    }
+}
 
 
 
@@ -7,7 +52,7 @@ import UIKit
 
 
 
-
+makeChangeAsString(fromAmount: 5.00, withCost: 2.50)
 
 
 
